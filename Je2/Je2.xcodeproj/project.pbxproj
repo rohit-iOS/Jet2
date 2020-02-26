@@ -14,6 +14,8 @@
 		C6AA67572406047C0092CA4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6AA67552406047C0092CA4B /* LaunchScreen.storyboard */; };
 		C6AA67622406047C0092CA4B /* Je2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA67612406047C0092CA4B /* Je2Tests.swift */; };
 		C6AA676D2406047C0092CA4B /* Je2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA676C2406047C0092CA4B /* Je2UITests.swift */; };
+		C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2852406119B00E58B3E /* AppConstants.swift */; };
+		C6D7E288240611AC00E58B3E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E287240611AC00E58B3E /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C6AA67682406047C0092CA4B /* Je2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Je2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA676C2406047C0092CA4B /* Je2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Je2UITests.swift; sourceTree = "<group>"; };
 		C6AA676E2406047C0092CA4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6D7E2852406119B00E58B3E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		C6D7E287240611AC00E58B3E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				C6AA674C2406047A0092CA4B /* AppDelegate.swift */,
 				C6AA674E2406047A0092CA4B /* ViewController.swift */,
+				C6D7E2832406116900E58B3E /* Common */,
+				C6D7E2842406117200E58B3E /* Network Manager */,
 				C6AA67502406047A0092CA4B /* Main.storyboard */,
 				C6AA67532406047C0092CA4B /* Assets.xcassets */,
 				C6AA67552406047C0092CA4B /* LaunchScreen.storyboard */,
@@ -123,6 +129,22 @@
 				C6AA676E2406047C0092CA4B /* Info.plist */,
 			);
 			path = Je2UITests;
+			sourceTree = "<group>";
+		};
+		C6D7E2832406116900E58B3E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E2852406119B00E58B3E /* AppConstants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C6D7E2842406117200E58B3E /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E287240611AC00E58B3E /* APIManager.swift */,
+			);
+			path = "Network Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D7E288240611AC00E58B3E /* APIManager.swift in Sources */,
 				C6AA674F2406047A0092CA4B /* ViewController.swift in Sources */,
+				C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */,
 				C6AA674D2406047A0092CA4B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +456,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Je2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +465,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jet2Travel.Je2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,7 +475,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Je2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,6 +484,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jet2Travel.Je2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
