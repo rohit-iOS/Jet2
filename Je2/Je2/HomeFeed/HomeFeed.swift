@@ -14,19 +14,20 @@ struct TeamMembers: Codable {
     enum CodingKeys: String, CodingKey {
         case teamMebers = "results"
     }
+}
+
+struct TeamMember: Codable {
+    let gender: String
+    let name : Name
+    let imageUrls : ImageUrls
     
-    struct TeamMember: Codable {
-        let gender: String
-        let name : Name
-        let imageUrls : ImageUrls
-        
-        enum CodingKeys: String, CodingKey {
-            case gender = "gender"
-            case name = "name"
-            case imageUrls = "picture"
-        }
+    enum CodingKeys: String, CodingKey {
+        case gender = "gender"
+        case name = "name"
+        case imageUrls = "picture"
     }
 }
+
 
 struct Name: Codable {
     let title : String

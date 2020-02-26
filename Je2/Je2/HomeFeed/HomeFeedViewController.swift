@@ -10,6 +10,7 @@ import UIKit
 
 class HomeFeedViewController: UIViewController {
     
+    @IBOutlet weak var membersListCollectionV: UICollectionView!
     var dataSource : TeamMembers?
 
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class HomeFeedViewController: UIViewController {
     
     func refreshListing(with feedData: TeamMembers?) {
         dataSource = feedData
-        // reload listing
+        membersListCollectionV.reloadData()
     }
 
     func fetchTeamMembersList() {
@@ -48,5 +49,22 @@ class HomeFeedViewController: UIViewController {
                 }
             }
         }
+    }
+}
+
+
+extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSource?.teamMebers.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MembersCollectionViewCell", for: indexPath) as! MembersCollectionViewCell
+        
+        cell.configureCell(with: dataSource?.teamMebers[indexPath.row])
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width/2 - 20, height: (collectionView.frame.width/2 + 50))
     }
 }
