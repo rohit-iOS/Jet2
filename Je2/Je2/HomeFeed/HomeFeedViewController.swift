@@ -65,6 +65,6 @@ extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDe
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2 - 20, height: (collectionView.frame.width/2 + 50))
+        return CGSize(width: collectionView.frame.width/2 - 5, height: (collectionView.frame.width/2 + 50))
     }
 }
