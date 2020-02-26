@@ -16,6 +16,7 @@
 		C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2852406119B00E58B3E /* AppConstants.swift */; };
 		C6D7E288240611AC00E58B3E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E287240611AC00E58B3E /* APIManager.swift */; };
 		C6D7E28A2406128600E58B3E /* HomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */; };
+		C6D7E28E240613E700E58B3E /* HomeFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E28D240613E700E58B3E /* HomeFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C6D7E2852406119B00E58B3E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C6D7E287240611AC00E58B3E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewController.swift; sourceTree = "<group>"; };
+		C6D7E28D240613E700E58B3E /* HomeFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +103,8 @@
 		C6AA674B2406047A0092CA4B /* Je2 */ = {
 			isa = PBXGroup;
 			children = (
-				C6AA674C2406047A0092CA4B /* AppDelegate.swift */,
-				C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */,
+				C6D7E28B240613AE00E58B3E /* AppDelegate */,
+				C6D7E28C240613C500E58B3E /* HomeFeed */,
 				C6AA67502406047A0092CA4B /* Main.storyboard */,
 				C6D7E2832406116900E58B3E /* Common */,
 				C6D7E2842406117200E58B3E /* Network Manager */,
@@ -145,6 +147,23 @@
 				C6D7E287240611AC00E58B3E /* APIManager.swift */,
 			);
 			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		C6D7E28B240613AE00E58B3E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C6AA674C2406047A0092CA4B /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C6D7E28C240613C500E58B3E /* HomeFeed */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */,
+				C6D7E28D240613E700E58B3E /* HomeFeed.swift */,
+			);
+			path = HomeFeed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +300,7 @@
 				C6D7E288240611AC00E58B3E /* APIManager.swift in Sources */,
 				C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */,
 				C6AA674D2406047A0092CA4B /* AppDelegate.swift in Sources */,
+				C6D7E28E240613E700E58B3E /* HomeFeed.swift in Sources */,
 				C6D7E28A2406128600E58B3E /* HomeFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

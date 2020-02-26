@@ -10,5 +10,5 @@ import Foundation
 
 struct UrlComponents {
     static let baseUrlStr = "https://randomuser.me/api/?"
-    static let searchUrlPartStr = "page=3&results=10&seed=abc"
+    static let feedUrlPartStr = "page=3&results=10&seed=abc"
 }
