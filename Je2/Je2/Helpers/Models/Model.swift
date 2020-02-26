@@ -20,14 +20,41 @@ struct TeamMember: Codable {
     let gender: String
     let name : Name
     let imageUrls : ImageUrls
+    let email : String
+    let contactNo : String
+    let dateOfBirth : DOB
+    let address : Address
     
     enum CodingKeys: String, CodingKey {
         case gender = "gender"
         case name = "name"
         case imageUrls = "picture"
+        case email = "email"
+        case contactNo = "cell"
+        case dateOfBirth = "dob"
+        case address = "location"
+
     }
 }
 
+
+struct Address: Codable {
+    let city: String
+    let country: String
+    
+    enum CodingKeys: String, CodingKey {
+        case city = "city"
+        case country = "country"
+    }
+}
+
+struct DOB: Codable {
+    let date: String
+    
+    enum CodingKeys: String, CodingKey {
+        case date = "date"
+    }
+}
 
 struct Name: Codable {
     let title : String

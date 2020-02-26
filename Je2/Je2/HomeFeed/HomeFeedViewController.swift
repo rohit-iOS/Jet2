@@ -50,6 +50,14 @@ class HomeFeedViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueHomeFeedToDetails" {
+            let destinationVC = segue.destination as! MemebrDetailsViewController
+            destinationVC.memberInformation = (sender as! TeamMember)
+            
+        }
+    }
 }
 
 
@@ -61,10 +69,16 @@ extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MembersCollectionViewCell", for: indexPath) as! MembersCollectionViewCell
         
-        cell.configureCell(with: dataSource?.teamMebers[indexPath.row])
+        cell.configureCell(with: dataSource!.teamMebers[indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/2 - 5, height: (collectionView.frame.width/2 + 50))
+    }
+}
+
+extension HomeFeedViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segueHomeFeedToDetails", sender: dataSource!.teamMebers[indexPath.row])
     }
 }

@@ -10,5 +10,11 @@ import Foundation
 
 struct UrlComponents {
     static let baseUrlStr = "https://randomuser.me/api/?"
-    static let feedUrlPartStr = "page=3&results=10&seed=abc"
+    static let feedUrlPartStr = "results=20&seed=John"
+}
+
+
+struct DateFormats {
+    static let universal = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    static let display = "MMM dd,yyyy"
 }

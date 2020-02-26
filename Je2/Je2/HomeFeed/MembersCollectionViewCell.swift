@@ -26,10 +26,13 @@ class MembersCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(with memberData:TeamMember? ) {
-        firstNameLbl.text = memberData?.name.firstName
-        lastNameLbl.text = memberData?.name.lastName
-        genderImgV.image = memberData!.gender == "male" ? UIImage.init(named: "Male") : UIImage.init(named: "Female")
-        if let url = URL(string: memberData!.imageUrls.thumbnailImageUrl) {
+        
+        guard let memberInfo = memberData else { return }
+        
+        firstNameLbl.text = memberInfo.name.firstName
+        lastNameLbl.text = memberInfo.name.lastName
+        genderImgV.image = memberInfo.gender == "male" ? UIImage.init(named: "Male") : UIImage.init(named: "Female")
+        if let url = URL(string: memberInfo.imageUrls.thumbnailImageUrl) {
             profilePicImgV.af_setImage(withURL: url)
         }
     }

@@ -18,8 +18,9 @@
 		C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2852406119B00E58B3E /* AppConstants.swift */; };
 		C6D7E288240611AC00E58B3E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E287240611AC00E58B3E /* APIManager.swift */; };
 		C6D7E28A2406128600E58B3E /* HomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */; };
-		C6D7E28E240613E700E58B3E /* HomeFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E28D240613E700E58B3E /* HomeFeed.swift */; };
+		C6D7E28E240613E700E58B3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E28D240613E700E58B3E /* Model.swift */; };
 		C6D7E2902406C20E00E58B3E /* MembersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E28F2406C20E00E58B3E /* MembersCollectionViewCell.swift */; };
+		C6D7E2932406EEF900E58B3E /* MemebrDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D7E2922406EEF900E58B3E /* MemebrDetailsViewController.swift */; };
 		FEDDA086228F45DBC54AF3C9 /* Pods_Je2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027448B7312AFAAC88538C71 /* Pods_Je2.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,8 +64,9 @@
 		C6D7E2852406119B00E58B3E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C6D7E287240611AC00E58B3E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewController.swift; sourceTree = "<group>"; };
-		C6D7E28D240613E700E58B3E /* HomeFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeed.swift; sourceTree = "<group>"; };
+		C6D7E28D240613E700E58B3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C6D7E28F2406C20E00E58B3E /* MembersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6D7E2922406EEF900E58B3E /* MemebrDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemebrDetailsViewController.swift; sourceTree = "<group>"; };
 		D81CE99F07748CFC431EE917 /* Pods-Je2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Je2.debug.xcconfig"; path = "Target Support Files/Pods-Je2/Pods-Je2.debug.xcconfig"; sourceTree = "<group>"; };
 		EF50261F52B74A2E22B3AC07 /* Pods-Je2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Je2Tests.debug.xcconfig"; path = "Target Support Files/Pods-Je2Tests/Pods-Je2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,10 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				C6D7E28B240613AE00E58B3E /* AppDelegate */,
+				C6D7E29624070DAF00E58B3E /* Helpers */,
 				C6D7E28C240613C500E58B3E /* HomeFeed */,
-				C6AA67502406047A0092CA4B /* Main.storyboard */,
-				C6D7E2832406116900E58B3E /* Common */,
-				C6D7E2842406117200E58B3E /* Network Manager */,
+				C6D7E2912406EEBA00E58B3E /* MemberDetails */,
 				C6AA67532406047C0092CA4B /* Assets.xcassets */,
 				C6AA67552406047C0092CA4B /* LaunchScreen.storyboard */,
 				C6AA67582406047C0092CA4B /* Info.plist */,
@@ -193,10 +194,44 @@
 			isa = PBXGroup;
 			children = (
 				C6D7E2892406128600E58B3E /* HomeFeedViewController.swift */,
-				C6D7E28D240613E700E58B3E /* HomeFeed.swift */,
 				C6D7E28F2406C20E00E58B3E /* MembersCollectionViewCell.swift */,
 			);
 			path = HomeFeed;
+			sourceTree = "<group>";
+		};
+		C6D7E2912406EEBA00E58B3E /* MemberDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E2922406EEF900E58B3E /* MemebrDetailsViewController.swift */,
+			);
+			path = MemberDetails;
+			sourceTree = "<group>";
+		};
+		C6D7E29424070CA400E58B3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E28D240613E700E58B3E /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C6D7E29524070D7300E58B3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6AA67502406047A0092CA4B /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C6D7E29624070DAF00E58B3E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C6D7E29424070CA400E58B3E /* Models */,
+				C6D7E29524070D7300E58B3E /* Views */,
+				C6D7E2832406116900E58B3E /* Common */,
+				C6D7E2842406117200E58B3E /* Network Manager */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E167E621EC777925D24E7B12 /* Frameworks */ = {
@@ -452,7 +487,8 @@
 				C6D7E2862406119B00E58B3E /* AppConstants.swift in Sources */,
 				C6D7E2902406C20E00E58B3E /* MembersCollectionViewCell.swift in Sources */,
 				C6AA674D2406047A0092CA4B /* AppDelegate.swift in Sources */,
-				C6D7E28E240613E700E58B3E /* HomeFeed.swift in Sources */,
+				C6D7E2932406EEF900E58B3E /* MemebrDetailsViewController.swift in Sources */,
+				C6D7E28E240613E700E58B3E /* Model.swift in Sources */,
 				C6D7E28A2406128600E58B3E /* HomeFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
