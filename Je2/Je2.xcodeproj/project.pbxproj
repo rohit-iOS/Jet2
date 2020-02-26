@@ -141,6 +141,7 @@
 				C6D7E29624070DAF00E58B3E /* Helpers */,
 				C6D7E28C240613C500E58B3E /* HomeFeed */,
 				C6D7E2912406EEBA00E58B3E /* MemberDetails */,
+				C6D7E29524070D7300E58B3E /* Views */,
 				C6AA67532406047C0092CA4B /* Assets.xcassets */,
 				C6AA67552406047C0092CA4B /* LaunchScreen.storyboard */,
 				C6AA67582406047C0092CA4B /* Info.plist */,
@@ -220,14 +221,14 @@
 			children = (
 				C6AA67502406047A0092CA4B /* Main.storyboard */,
 			);
-			path = Views;
+			name = Views;
+			path = Helpers/Views;
 			sourceTree = "<group>";
 		};
 		C6D7E29624070DAF00E58B3E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				C6D7E29424070CA400E58B3E /* Models */,
-				C6D7E29524070D7300E58B3E /* Views */,
 				C6D7E2832406116900E58B3E /* Common */,
 				C6D7E2842406117200E58B3E /* Network Manager */,
 			);
