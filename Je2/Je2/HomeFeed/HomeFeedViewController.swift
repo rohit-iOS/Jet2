@@ -13,6 +13,7 @@ class HomeFeedViewController: UIViewController {
     @IBOutlet weak var membersListCollectionV: UICollectionView!
     @IBOutlet weak var deleteBtn: UIButton!
     var dataSource : [TeamMember]?
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class HomeFeedViewController: UIViewController {
 
     func fetchTeamMembersList() {
         
-        APIManager.get(request: UrlComponents.feedUrlPartStr) { (success, dataResponse) in
+        APIManager.get(request: UrlComponents.feedUrlPartStr) { (success, dataResponse, isOffline)  in
             DispatchQueue.main.async {
                 if success {
                     guard let data = dataResponse else {
@@ -40,6 +41,7 @@ class HomeFeedViewController: UIViewController {
                     do {
                         let searchResult = try JSONDecoder().decode(TeamMembers.self, from: data)
                         self.refreshListing(with: searchResult.teamMebers)
+                        self.storeDataForOffline()
                     }
                     catch {
                         print(error.localizedDescription)
@@ -47,6 +49,14 @@ class HomeFeedViewController: UIViewController {
                     }
                 } else {
                     print("Some network error.")
+                    if isOffline {
+                        if let savedMembers = self.defaults.object(forKey: "SavedMembers") as? Data {
+                            let decoder = JSONDecoder()
+                            if let loadedMemebers = try? decoder.decode([TeamMember].self, from: savedMembers) {
+                                self.refreshListing(with: loadedMemebers)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -117,6 +127,7 @@ class HomeFeedViewController: UIViewController {
             btn.setTitle("Delete", for: .normal)
             showDelete(show: true)
         }
+        storeDataForOffline()
     }
     
     @objc func deleteMemeberCell(btn:UIButton) {
@@ -125,7 +136,12 @@ class HomeFeedViewController: UIViewController {
         membersListCollectionV!.reloadData()
     }
 
-    
+    func storeDataForOffline() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(dataSource) {
+            defaults.set(encoded, forKey: "SavedMembers")
+        }
+    }
 }
 
 
