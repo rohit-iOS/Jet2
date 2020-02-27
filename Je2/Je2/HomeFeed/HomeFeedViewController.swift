@@ -11,7 +11,7 @@ import UIKit
 class HomeFeedViewController: UIViewController {
     
     @IBOutlet weak var membersListCollectionV: UICollectionView!
-    var dataSource : TeamMembers?
+    var dataSource : [TeamMember]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class HomeFeedViewController: UIViewController {
         return .lightContent
     }
     
-    func refreshListing(with feedData: TeamMembers?) {
+    func refreshListing(with feedData: [TeamMember]?) {
         dataSource = feedData
         membersListCollectionV.reloadData()
     }
@@ -38,7 +38,7 @@ class HomeFeedViewController: UIViewController {
                     }
                     do {
                         let searchResult = try JSONDecoder().decode(TeamMembers.self, from: data)
-                        self.refreshListing(with: searchResult)
+                        self.refreshListing(with: searchResult.teamMebers)
                     }
                     catch {
                         print(error.localizedDescription)
@@ -58,18 +58,62 @@ class HomeFeedViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func sortBtnAction(_ sender: UIButton) {
+        
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "By last name", style: .default) { (action) in
+            self.sortListing(by: .byLastName)
+        }
+        let saveAction = UIAlertAction(title: "By age", style: .default) { (action) in
+            self.sortListing(by: .byAge)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    enum Sort {
+        case byLastName
+        case byAge
+    }
+    
+    func sortListing(by sortType:Sort) {
+        
+        switch sortType {
+        case .byLastName :
+            let sortedDataSource = dataSource?.sorted(by: { (member1, member2) -> Bool in
+                member1.name.lastName < member2.name.lastName
+            })
+            refreshListing(with: sortedDataSource)
+            break
+        case .byAge :
+            let sortedDataSource = dataSource?.sorted(by: { (member1, member2) -> Bool in
+                member1.dateOfBirth.date < member2.dateOfBirth.date
+            })
+            refreshListing(with: sortedDataSource)
+
+            break
+        default:
+            print("Something went wrong while sorting")
+        }
+    }
+    
 }
 
 
 extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.teamMebers.count ?? 0
+        return dataSource?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MembersCollectionViewCell", for: indexPath) as! MembersCollectionViewCell
         
-        cell.configureCell(with: dataSource!.teamMebers[indexPath.row])
+        cell.configureCell(with: dataSource![indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -79,6 +123,6 @@ extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension HomeFeedViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "segueHomeFeedToDetails", sender: dataSource!.teamMebers[indexPath.row])
+        self.performSegue(withIdentifier: "segueHomeFeedToDetails", sender: dataSource![indexPath.row])
     }
 }
