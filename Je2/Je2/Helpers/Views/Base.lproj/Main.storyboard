@@ -60,6 +60,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrk-ft-QfQ">
+                                                    <rect key="frame" x="120" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="c9U-YE-yAw"/>
+                                                        <constraint firstAttribute="width" secondItem="Xrk-ft-QfQ" secondAttribute="height" multiplier="1:1" id="zGm-Qk-MWA"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,10 +82,13 @@
                                             <constraint firstAttribute="trailing" secondItem="c9e-sh-LQ4" secondAttribute="trailing" constant="10" id="alP-TX-nia"/>
                                             <constraint firstAttribute="trailing" secondItem="q8B-YB-dnv" secondAttribute="trailing" constant="10" id="bKb-IL-DQc"/>
                                             <constraint firstItem="c9e-sh-LQ4" firstAttribute="top" secondItem="q8B-YB-dnv" secondAttribute="bottom" constant="4" id="eWT-1x-i0n"/>
+                                            <constraint firstItem="Xrk-ft-QfQ" firstAttribute="top" secondItem="GUb-fP-Hsu" secondAttribute="top" id="kg4-Vj-JUK"/>
                                             <constraint firstItem="c9e-sh-LQ4" firstAttribute="leading" secondItem="slG-In-ima" secondAttribute="trailing" constant="10" id="lPL-0S-DjN"/>
                                             <constraint firstItem="slG-In-ima" firstAttribute="leading" secondItem="GOF-Ip-MxA" secondAttribute="leading" id="qTM-I3-7vA"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xrk-ft-QfQ" secondAttribute="trailing" id="wCG-F1-uT8"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="deleteBtn" destination="Xrk-ft-QfQ" id="4xc-dv-wGL"/>
                                             <outlet property="firstNameLbl" destination="q8B-YB-dnv" id="mai-Ze-yaW"/>
                                             <outlet property="genderImgV" destination="slG-In-ima" id="aUa-3M-Ehu"/>
                                             <outlet property="lastNameLbl" destination="c9e-sh-LQ4" id="Yam-Us-X3M"/>
@@ -104,11 +115,25 @@
                                     <action selector="sortBtnAction:" destination="S3o-m4-rsi" eventType="touchUpInside" id="9Uh-nW-VW5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdQ-Eb-HgC">
+                                <rect key="frame" x="0.0" y="20" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="eK3-B2-HcT"/>
+                                    <constraint firstAttribute="height" constant="30" id="v85-dX-F1V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteBtnAction:" destination="S3o-m4-rsi" eventType="touchUpInside" id="wWV-4t-7P6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zA2-tb-9Bm" firstAttribute="top" secondItem="gJh-eF-M0g" secondAttribute="top" id="5mI-L3-3ft"/>
                             <constraint firstItem="Jcp-TS-odG" firstAttribute="leading" secondItem="gJh-eF-M0g" secondAttribute="leading" id="AL2-qk-Fst"/>
+                            <constraint firstItem="FdQ-Eb-HgC" firstAttribute="top" secondItem="gJh-eF-M0g" secondAttribute="top" id="IfK-VT-UdX"/>
+                            <constraint firstItem="FdQ-Eb-HgC" firstAttribute="leading" secondItem="gJh-eF-M0g" secondAttribute="leading" id="WuP-BG-92G"/>
                             <constraint firstItem="zA2-tb-9Bm" firstAttribute="trailing" secondItem="gJh-eF-M0g" secondAttribute="trailing" id="gMC-gh-ZPc"/>
                             <constraint firstItem="gJh-eF-M0g" firstAttribute="bottom" secondItem="Jcp-TS-odG" secondAttribute="bottom" id="hQc-uQ-PKl"/>
                             <constraint firstItem="gJh-eF-M0g" firstAttribute="trailing" secondItem="Jcp-TS-odG" secondAttribute="trailing" id="seA-bg-19b"/>
@@ -117,6 +142,7 @@
                         <viewLayoutGuide key="safeArea" id="gJh-eF-M0g"/>
                     </view>
                     <connections>
+                        <outlet property="deleteBtn" destination="FdQ-Eb-HgC" id="mYu-yB-7i7"/>
                         <outlet property="membersListCollectionV" destination="Jcp-TS-odG" id="9iU-fF-mNN"/>
                         <segue destination="VsW-4z-Nnj" kind="presentation" identifier="segueHomeFeedToDetails" id="PsJ-lq-lcj"/>
                     </connections>
@@ -301,6 +327,7 @@
     </scenes>
     <resources>
         <image name="call" width="64" height="64"/>
+        <image name="delete" width="64" height="64"/>
         <image name="dob" width="64" height="64"/>
         <image name="email" width="64" height="64"/>
         <image name="location" width="64" height="64"/>

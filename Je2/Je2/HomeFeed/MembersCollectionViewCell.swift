@@ -14,6 +14,7 @@ class MembersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genderImgV: UIImageView!
     @IBOutlet weak var firstNameLbl: UILabel!
     @IBOutlet weak var lastNameLbl: UILabel!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     override var bounds: CGRect {
         didSet {

@@ -11,6 +11,7 @@ import UIKit
 class HomeFeedViewController: UIViewController {
     
     @IBOutlet weak var membersListCollectionV: UICollectionView!
+    @IBOutlet weak var deleteBtn: UIButton!
     var dataSource : [TeamMember]?
 
     override func viewDidLoad() {
@@ -97,10 +98,33 @@ class HomeFeedViewController: UIViewController {
             refreshListing(with: sortedDataSource)
 
             break
-        default:
-            print("Something went wrong while sorting")
         }
     }
+    
+    @IBAction func deleteBtnAction(_ btn: UIButton) {
+        func showDelete(show:Bool) {
+            for item in membersListCollectionV!.visibleCells as! [MembersCollectionViewCell] {
+                let indexPath: NSIndexPath = membersListCollectionV!.indexPath(for: item)! as NSIndexPath
+                let cell: MembersCollectionViewCell = membersListCollectionV.cellForItem(at: indexPath as IndexPath) as! MembersCollectionViewCell
+                cell.deleteBtn.isHidden = show
+            }
+        }
+
+        if btn.titleLabel?.text == "Delete" {
+            btn.setTitle("Done", for: .normal)
+            showDelete(show: false)
+        } else {
+            btn.setTitle("Delete", for: .normal)
+            showDelete(show: true)
+        }
+    }
+    
+    @objc func deleteMemeberCell(btn:UIButton) {
+        let i: Int = (btn.layer.value(forKey: "index")) as! Int
+        dataSource!.remove(at: i)
+        membersListCollectionV!.reloadData()
+    }
+
     
 }
 
@@ -114,6 +138,15 @@ extension HomeFeedViewController: UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MembersCollectionViewCell", for: indexPath) as! MembersCollectionViewCell
         
         cell.configureCell(with: dataSource![indexPath.row])
+        
+        if deleteBtn.titleLabel?.text == "Delete" {
+            cell.deleteBtn.isHidden = true
+        } else {
+             cell.deleteBtn.isHidden = false
+        }
+        
+        cell.deleteBtn.layer.setValue(indexPath.row, forKey: "index")
+        cell.deleteBtn.addTarget(self, action: #selector(deleteMemeberCell(btn:)), for: .touchUpInside)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
